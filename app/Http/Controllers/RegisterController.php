@@ -31,4 +31,24 @@ class RegisterController extends Controller
     ],200);
 
     }
+    public function login(Request $request){
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        if(auth()->attempt($credentials)){
+            $token = auth()->user()->createToken('TransporteToken')->accessToken;
+            return response()->json(['token' => $token,
+            "id"    => auth()->user()->id,
+            "email" => auth()->user()->email,
+            "name"  => auth()->user()->name,
+
+        ], 200);
+
+        }
+        else {
+            return response()->json(['error' => 'UnAuthorised'], 401);
+        }
+    }
 }
