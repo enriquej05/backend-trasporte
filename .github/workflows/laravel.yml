@@ -1,0 +1,33 @@
+name: Deployment
+on:
+  push: 
+     branches: [master]
+     
+     
+jobs:
+  job_one: 
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing transportes server ssh connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: 23.20.191.248
+          username: root
+          key: ${{secrets.KEY_SECRET}}
+          port: 22
+          script: |
+            sudo su
+            cd ..
+            cd ../home/admin/web/enrique-dev.com/public_html
+            php artisan down
+            git checkout -f
+            git pull origin master
+            composer install --ignore-platform-reqs
+            php artisan optimize:clear
+            php artisan migrate
+            php artisan passport:install --force
+            chmod -R 777 storage
+            chmod -R 777 boostrap
+            php artisan up
+              
