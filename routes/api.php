@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RutaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,4 +23,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Se accede a las apis mediante un token.
 Route::middleware('auth:api')->group(function () {
     Route::get('/perfil', [ UserController::class, 'perfil']);
+    Route::post('obtenerruta', [RutaController::class, 'ruta']);
+
 });
