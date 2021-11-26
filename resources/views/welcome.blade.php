@@ -57,7 +57,7 @@
                           <p>Este proyecto se encuentra en una cuenta estudiantil por lo que se debe de reactivar las instancias cada vez que se finalice la sesión</p>
                         </div>
                         <div class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
-                          <p>Disculpe las molestias :(</p>
+                          <p>Disculpe las molestiasss :(</p>
                           <p>
                             <a href="https://api.whatsapp.com/send?phone=+529981887007&text={{ urlencode('Hola') }}" class="text-cyan-600 hover:text-cyan-700"> Comunicarse con el representante del equipo&rarr; </a>
                           </p>
