@@ -23,6 +23,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Se accede a las apis mediante un token.
 Route::middleware('auth:api')->group(function () {
     Route::get('/perfil', [ UserController::class, 'perfil']);
-    Route::post('obtenerruta', [RutaController::class, 'ruta']);
+    Route::post('/obtenerruta', [RutaController::class, 'ruta']);
 
 });
